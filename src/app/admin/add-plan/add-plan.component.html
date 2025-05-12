@@ -1,0 +1,46 @@
+<div class="container py-4">
+    <h2 class="mb-4">Ajouter un nouveau plan</h2>
+  
+    <form [formGroup]="planForm" (ngSubmit)="onSubmit()" class="row g-3">
+      <div class="col-12">
+        <label class="form-label">Niveau VIP</label>
+        <input type="text" formControlName="vipLevel" class="form-control" placeholder="Ex: VIP 1">
+      </div>
+  
+      <div class="col-12">
+        <label class="form-label">Intervalle d’investissement</label>
+        <input type="text" formControlName="investmentRange" class="form-control" placeholder="Ex: €100 - €999">
+      </div>
+  
+      <div class="col-md-6">
+        <label class="form-label">Durée</label>
+        <input type="text" formControlName="duration" class="form-control" placeholder="Ex: 30 jours">
+      </div>
+  
+      <div class="col-md-6">
+        <label class="form-label">Rendement hebdomadaire</label>
+        <input type="text" formControlName="weeklyReturn" class="form-control" placeholder="Ex: 10%">
+      </div>
+  
+      <div class="col-12 text-end">
+        <button type="submit" class="btn btn-success">
+          <i class="bi bi-check-circle"></i> Ajouter
+        </button>
+
+          <!-- Message de succès -->
+    @if(b){
+      <p class="alert alert-success text-center mt-2" *ngIf="msgSuccess">
+          {{ msgSuccess }}
+      </p>
+    }@else{
+
+      <!-- Message d'erreur -->
+      <p class="alert alert-danger text-center mt-2" *ngIf="msgError">
+          {{ msgError }}
+      </p>
+    }
+
+      </div> 
+    </form>
+  </div>
+  

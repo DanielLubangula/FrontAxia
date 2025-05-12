@@ -1,0 +1,16 @@
+  /* Cacher le tableau sur petits écrans */
+  @media (max-width: 767.98px) {
+    .table-responsive {
+      display: none;
+    }
+    .user-cards {
+      display: block;
+    }
+  }
+
+  /* Cacher les cartes sur écrans moyens et grands */
+  @media (min-width: 768px) {
+    .user-cards {
+      display: none;
+    }
+  }

@@ -1,0 +1,111 @@
+<!-- Bouton d’ajout -->
+<div class="mb-3 text-end">
+  <button class="btn btn-success" [routerLink]="('/secret/admin/add/plan')">
+    <i class="bi bi-plus-circle"></i> Ajouter un plan
+  </button>
+</div>
+
+<!-- Liste des plans existants -->
+<div id="plans-list">
+  <!-- Exemple d’un plan existant -->
+  <div class="card mb-3 shadow-sm">
+    <div class="card-body">
+      <form class="row gx-2 gy-2 align-items-center">
+        <div class="card mb-3 shadow-sm" *ngFor="let p of plans">
+          <div class="card-body">
+            <form
+              [formGroup]="forms[p._id]"
+              class="row gx-2 gy-2 align-items-center"
+            >
+              <div class="col-12">
+                <label class="form-label">Niveau VIP</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="vipLevel"
+                />
+              </div>
+              <div class="col-12">
+                <label class="form-label">Intervalle d’investissement</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="investmentRange"
+                />
+              </div>
+              <div class="col-6 col-md-7">
+                <label class="form-label">Durée</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="duration"
+                />
+              </div>
+              <div class="col-6 col-md-7">
+                <label class="form-label">Rendement hebdo.</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="weeklyReturn"
+                />
+              </div>
+              <div
+                class="col-12 col-md-7 d-flex flex-column justify-content-end gap-1 mt-md-4"
+              >
+                <button
+                  type="button"
+                  (click)="modified(p._id)"
+                  class="btn btn-primary btn-sm w-100 mt-2"
+                >
+                  <i class="bi bi-save"></i>
+                </button>
+                <button
+                  type="button"
+                  (click)="deletePlan(p._id)"
+                  class="btn btn-danger btn-sm w-100 mb-2"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Formulaire d’ajout d’un nouveau plan -->
+<div id="new-plan-form" class="card shadow-sm d-none">
+  <div class="card-body">
+    <form class="row gx-2 gy-2 align-items-center">
+      <div class="col-12">
+        <label class="form-label">Niveau VIP</label>
+        <input type="text" class="form-control" placeholder="Ex: VIP 2" />
+      </div>
+      <div class="col-12">
+        <label class="form-label">Intervalle d’investissement</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Ex: €1000 - €4999"
+        />
+      </div>
+      <div class="col-6 col-md-7">
+        <label class="form-label">Durée</label>
+        <input type="text" class="form-control" placeholder="Ex: 60 jours" />
+      </div>
+      <div class="col-6 col-md-7">
+        <label class="form-label">Rendement hebdo.</label>
+        <input type="text" class="form-control" placeholder="Ex: 15%" />
+      </div>
+      <div
+        class="col-12 col-md-7 d-flex flex-column justify-content-end mt-md-4"
+      >
+        <button type="submit" class="btn btn-success btn-sm w-100">
+          <i class="bi bi-check-circle"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

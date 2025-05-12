@@ -1,0 +1,145 @@
+<main class="bg-light py-5">
+  <div class="container">
+    <!-- Zone d'instructions -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-8">
+        <div class="card shadow rounded-3 border-0">
+          <div class="card-header bg-dark-blue text-white rounded-top-3 py-3">
+            <h3 class="text-gold mb-0 text-center">
+              <i class="bi bi-wallet2"></i> Dépôt Manuel
+            </h3>
+          </div>
+          <div class="card-body">
+            <div class="alert alert-warning mb-4">
+              <p class="mb-3">
+                <strong>
+                  Envoyez le montant depuis votre portefeuille crypto (ex: LBank, Trust Wallet...) vers une des adresses ci-dessous.
+                </strong>
+              </p>
+
+              <div class="mb-3">
+                <strong>USDT / TRC20 :</strong>
+                <div class="d-flex align-items-center bg-light p-2 rounded justify-content-between">
+                  <code class="text-dark fw-bold fs-6">{{ usdtTrc20 }}</code>
+                  <button class="btn btn-gold btn-sm ms-3" (click)="copyAddress(usdtTrc20, 'trc20')">
+                    <i class="bi bi-clipboard"></i> {{ copiedTrc20 ? '✅ Copié !' : 'Copier' }}
+                  </button>
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <strong>USDT / BEP20 (BSC) :</strong>
+                <div class="d-flex align-items-center bg-light p-2 rounded justify-content-between">
+                  <code class="text-dark fw-bold fs-6">{{ usdtBep20 }}</code>
+                  <button class="btn btn-gold btn-sm ms-3" (click)="copyAddress(usdtBep20, 'bep20')">
+                    <i class="bi bi-clipboard"></i> {{ copiedBep20 ? '✅ Copié !' : 'Copier' }}
+                  </button>
+                </div>
+              </div>
+
+              <div class="alert alert-danger mt-4" role="alert">
+                ⚠️ <strong>Attention :</strong> Assurez-vous de bien choisir l’adresse correspondant au réseau que vous utilisez !
+                <br />
+                Un envoi vers une mauvaise adresse (par exemple TRC20 → BEP20) entraînera une <strong>perte définitive de vos fonds</strong>.
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulaire de dépôt -->
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow rounded-3 border-0">
+          <div class="card-header bg-dark-blue text-white rounded-top-3 py-3">
+            <h3 class="text-gold mb-0 text-center">
+              <i class="bi bi-credit-card"></i> Informations de Dépôt
+            </h3>
+          </div>
+          <div class="card-body">
+            <form
+              id="depositForm"
+              [formGroup]="depositForm"
+              (ngSubmit)="onSubmit()"
+            >
+              <div class="mb-4">
+                <label for="amount" class="form-label fw-bold">Montant (€)</label>
+                <input
+                  type="number"
+                  formControlName="amount"
+                  class="form-control"
+                  id="amount"
+                  min="1"
+                  required
+                />
+                <div class="form-text">Entrer le montant</div>
+              </div>
+
+              <div class="mb-4">
+                <label for="txReference" class="form-label fw-bold">Référence de transaction</label>
+                <input
+                  type="text"
+                  formControlName="txReference"
+                  class="form-control"
+                  id="txReference"
+                  required
+                />
+                <div class="form-text">
+                  Identifiant de transaction de votre portefeuille
+                </div>
+              </div>
+
+              <!-- 🔄 Nouveau champ réseau -->
+              <div class="mb-4">
+                <label for="network" class="form-label fw-bold">Réseau</label>
+                <select formControlName="network" class="form-select" id="network" required>
+                  <option value="">-- Choisir un réseau --</option>
+                  <option value="TRC20">USDT / TRC20</option>
+                  <option value="BEP20">USDT / BEP20 (BSC)</option>
+                </select>
+              </div>
+
+              <!-- Preuve de paiement -->
+              <div class="mb-4">
+                <label for="paymentProof" class="form-label fw-bold">Preuve de paiement</label>
+                <input
+                  type="file"
+                  class="form-control"
+                  id="paymentProof"
+                  accept="image/*"
+                  (change)="onSelectFile($event)"
+                  required
+                />
+                <div class="form-text">
+                  Capture d'écran de la confirmation de transaction
+                </div>
+
+                <!-- Aperçu de l'image -->
+                <div *ngIf="previewUrl" class="mt-3">
+                  <p class="fw-bold mb-1">Aperçu :</p>
+                  <img
+                    [src]="previewUrl"
+                    alt="Aperçu"
+                    class="img-fluid rounded shadow-sm border"
+                    style="max-height: 200px"
+                  />
+                </div>
+              </div>
+
+              <!-- Erreur -->
+              <p class="container text-danger text-center"> {{ Errormsg }} </p>
+
+              <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-gold btn-lg py-2">
+                  <i class="bi bi-send-check"></i> Soumettre le dépôt
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

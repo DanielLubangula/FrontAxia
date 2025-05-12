@@ -1,0 +1,77 @@
+<!-- Header global -->
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Admin Panel</a>
+  </header>
+
+  <button class="btn btn-dark d-md-none m-2" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
+  <i class="bi bi-list"></i> Menu
+</button>
+
+  
+  <div class="container-fluid">
+    <div class="row">
+          <!-- Sidebar responsive -->
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column" id="adminTabs">
+            <li class="nav-item">
+              <a class="nav-link active" data-bs-toggle="tab" href="#dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#users"><i class="bi bi-people"></i> Utilisateurs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#deposits"><i class="bi bi-wallet2"></i> Dépôts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#withdrawals"><i class="bi bi-cash"></i> Retraits</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#plans"><i class="bi bi-box"></i> Plans</a>
+            </li>
+            
+          </ul>
+        </div>ib
+      </nav>
+  
+      <!-- Contenu principal -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="tab-content mt-4">
+  
+          <!-- Onglet Dashboard -->
+          <div class="tab-pane fade show active" id="dashboard">
+            <h2>Dashboard</h2>
+            <app-info-dashboard></app-info-dashboard>
+          </div>
+  
+          <!-- Onglet Utilisateurs -->
+          <div class="tab-pane fade" id="users">
+            <h2>Gestion des utilisateurs</h2>
+            <app-users></app-users>
+          </div>
+  
+          <!-- Onglet Dépôts -->
+          <div class="tab-pane fade" id="deposits">
+            <h2>Dépôts en attente / validés</h2>
+            <app-deposit></app-deposit>
+          </div>
+  
+          <!-- Onglet Retraits -->
+          <div class="tab-pane fade" id="withdrawals">
+            <h2>Retraits à traiter</h2>
+            <app-retrait></app-retrait>
+          </div>
+  
+          <!-- Onglet Plans -->
+          <div class="tab-pane fade" id="plans">
+            <h2>Plans d'investissement</h2>
+            <app-plans></app-plans>
+           
+          </div>
+  
+  
+        </div>
+      </main>
+    </div>
+  </div>
+  

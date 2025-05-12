@@ -1,0 +1,102 @@
+
+    <!-- Recherche et filtre -->
+    <div class="mb-3 row gx-2 gy-2 align-items-center">
+      <div class="col-12 col-md-6">
+        <input type="text" class="form-control w-100" placeholder="Rechercher par nom, email...">
+      </div>
+      <div class="col-12 col-md-6 text-md-end">
+        <select class="form-select w-100 w-md-auto">
+          <option value="">Filtrer par statut</option>
+          <option value="pending">En attente</option>
+          <option value="validated">Validé</option>
+          <option value="rejected">Rejeté</option>
+        </select>
+      </div>
+    </div>
+  
+    <!-- Vue Table (desktop) -->
+    <div class="card shadow-sm d-none d-md-block">
+      <div class="card-header bg-light">Demandes de retraits</div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover mb-0">
+            <thead class="table-light">
+              <tr>
+                <th>#</th>
+                <th>Utilisateur</th>
+                <th>Montant</th>
+                <th>Méthode</th>
+                <th>Compte / Wallet</th>
+                <th>Date</th>
+                <th>Statut</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Jean Dupont</td>
+                <td>€500</td>
+                <td>Crypto</td>
+                <td>0xABC1234DEF</td>
+                <td>03/05/2025</td>
+                <td><span class="badge bg-warning">En attente</span></td>
+                <td class="d-flex flex-wrap gap-1">
+                  <button class="btn btn-sm btn-outline-success" title="Valider"><i class="bi bi-check-circle"></i></button>
+                  <button class="btn btn-sm btn-outline-danger" title="Rejeter"><i class="bi bi-x-circle"></i></button>
+                  <button class="btn btn-sm btn-outline-primary" title="Voir"><i class="bi bi-eye"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Fatou Ndiaye</td>
+                <td>€750</td>
+                <td>Virement bancaire</td>
+                <td>FR76 1234 5678 9012</td>
+                <td>01/05/2025</td>
+                <td><span class="badge bg-success">Validé</span></td>
+                <td class="d-flex flex-wrap gap-1">
+                  <button class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Vue Cartes (mobile only) -->
+    <div class="d-block d-md-none">
+      <!-- Retrait 1 -->
+      <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title mb-2">Jean Dupont</h5>
+          <p><strong>Montant :</strong> €500</p>
+          <p><strong>Méthode :</strong> Crypto</p>
+          <p><strong>Wallet :</strong> 0xABC1234DEF</p>
+          <p><strong>Date :</strong> 03/05/2025</p>
+          <p><strong>Statut :</strong> <span class="badge bg-warning">En attente</span></p>
+          <div class="d-flex gap-2">
+            <button class="btn btn-sm btn-outline-success"><i class="bi bi-check-circle"></i></button>
+            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-x-circle"></i></button>
+            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i></button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Retrait 2 -->
+      <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title mb-2">Fatou Ndiaye</h5>
+          <p><strong>Montant :</strong> €750</p>
+          <p><strong>Méthode :</strong> Virement bancaire</p>
+          <p><strong>IBAN :</strong> FR76 1234 5678 9012</p>
+          <p><strong>Date :</strong> 01/05/2025</p>
+          <p><strong>Statut :</strong> <span class="badge bg-success">Validé</span></p>
+          <div class="d-flex gap-2">
+            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  

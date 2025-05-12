@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+.transition-icon {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .rotate-in {
+    transform: rotate(180deg);
+    opacity: 1;
+  }
+  
+  .rotate-out {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  

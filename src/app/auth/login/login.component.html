@@ -1,0 +1,48 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-lg p-4" style="max-width: 400px; width: 100%;">
+      <!-- <div class="text-center mb-4">
+        <h1 class="h3 mb-0 fw-bold" style="color: #0a1930;">Axia Capital</h1>
+        <img [src]="logoUrl" alt="Logo Axia Capital" class="logo">
+
+        <p class="text-muted">Connexion à votre compte</p>
+      </div> -->
+      <div class="text-center mb-4">
+        <div class="d-flex align-items-center justify-content-center mb-2">
+          <img [src]="logoUrl" alt="Logo Axia Capital" style="height: 80px; width: auto; margin-right: 10px;">
+          <!-- <h1 class="h3 mb-0 fw-bold" style="color: #0a1930;">Axia Capital</h1> -->
+        </div>
+        <p class="text-muted">Connexion à votre compte</p>
+      </div>
+      
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+ 
+        <div class="mb-3">
+          <label for="loginEmail" class="form-label">Adresse email</label>
+          <input formControlName="email" class="form-control" type="email" id="loginEmail" class="form-control" placeholder="Entrez votre email" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="loginPassword" class="form-label">Mot de passe</label>
+          <input formControlName="password" class="form-control" type="password" id="loginPassword" class="form-control" placeholder="Entrez votre mot de passe" required>
+        </div>
+        
+        <div class="error text-center text-danger" *ngIf="messageError">
+          <i class="bi bi-exclamation-triangle-fill"></i>
+          {{messageError}}
+        </div>
+        
+        <div class="d-grid">
+          <button type="submit" class="btn " style="background-color: #d4af37; color: #f5f5f5">Se connecter</button>
+        </div>
+        
+        <div class="text-center mt-3">
+          <small>Pas encore de compte ? <a [routerLink]="'/auth/register'">S’inscrire</a></small>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- <form ngSubmit="onSubmit()">
+    <input type="text">
+    <button>Envoyer</button>
+  </form> -->

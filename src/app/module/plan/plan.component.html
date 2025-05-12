@@ -1,0 +1,44 @@
+@if(isLoad){
+
+<div class="container my-5">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div class="col" *ngFor="let plan of plans">
+      <app-plan-card [plan]="plan"></app-plan-card>
+    </div>
+  </div>
+</div>
+
+}@else{
+<!-- From Uiverse.io by Admin12121 -->
+<div class="contenair">
+  <div class="loader">
+    <div class="box box0">
+      <div></div>
+    </div>
+    <div class="box box1">
+      <div></div>
+    </div>
+    <div class="box box2">
+      <div></div>
+    </div>
+    <div class="box box3">
+      <div></div>
+    </div>
+    <div class="box box4">
+      <div></div>
+    </div>
+    <div class="box box5">
+      <div></div>
+    </div>
+    <div class="box box6">
+      <div></div>
+    </div>
+    <div class="box box7">
+      <div></div>
+    </div>
+    <div class="ground">
+      <div></div>
+    </div>
+  </div>
+</div>
+}

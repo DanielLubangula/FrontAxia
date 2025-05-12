@@ -1,0 +1,83 @@
+<button class="btn bg-primary m-3" [routerLink]="('/secret/admin/dashbord')">DashBorard</button>
+<div class="container mt-4">
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h4 class="card-title">Informations de l'utilisateur</h4>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Nom:</strong> {{ user?.username }}</li>
+          <li class="list-group-item"><strong>Email:</strong> {{ user?.email }}</li>
+          <li class="list-group-item"><strong>Rôle:</strong> {{ user?.role }}</li>
+          <li class="list-group-item"><strong>Solde:</strong> €{{ user?.balance }}</li>
+          <li class="list-group-item"><strong>Inscrit le:</strong> {{ user?.createdAt | date:'medium' }}</li>
+          <li class="list-group-item"><strong>Parrainé par:</strong> {{ user?.referredBy?.username || 'Aucun' }}</li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h5 class="card-title">Historique des dépôts</h5>
+        <div *ngIf="depots.length === 0" class="text-muted">Aucun dépôt</div>
+        <table *ngIf="depots.length" class="table table-striped table-hover mt-3">
+          <thead>
+            <tr>
+              <th>Montant (€)</th>
+              <th>Référence</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let depot of depots">
+              <td>{{ depot.amount }}</td>
+              <td>{{ depot.txReference }}</td>
+              <td>
+                <span class="badge"
+                  [ngClass]="{
+                    'bg-success': depot.status === 'validé',
+                    'bg-danger': depot.status === 'rejeté',
+                    'bg-warning': depot.status === 'en attente'
+                  }">
+                  {{ depot.status }}
+                </span>
+              </td>
+              <td>{{ depot.createdAt | date:'short' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+    <div class="card shadow-sm mb-5">
+      <div class="card-body">
+        <h5 class="card-title">Historique des retraits</h5>
+        <div *ngIf="retraits.length === 0" class="text-muted">Aucun retrait</div>
+        <table *ngIf="retraits.length" class="table table-striped table-hover mt-3">
+          <thead>
+            <tr>
+              <th>Montant (€)</th>
+              <th>Statut</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let retrait of retraits">
+              <td>{{ retrait.amount }}</td>
+              <td>
+                <span class="badge"
+                  [ngClass]="{
+                    'bg-success': retrait.status === 'validé',
+                    'bg-danger': retrait.status === 'rejeté',
+                    'bg-warning': retrait.status === 'en attente'
+                  }">
+                  {{ retrait.status }}
+                </span>
+              </td>
+              <td>{{ retrait.createdAt | date:'short' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

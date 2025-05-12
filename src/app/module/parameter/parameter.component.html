@@ -1,0 +1,57 @@
+<div class="container mobile-container py-5">
+    <h2 class="text-center mb-5">
+      <i class="bi bi-gear"></i> Paramètres du compte
+    </h2>
+  
+    <!-- Informations personnelles -->
+    <div class="card shadow-sm border-0 mb-4">
+      <div class="card-body">
+        <h4 class="mb-4"><i class="bi bi-person-circle"></i> Informations personnelles</h4>
+        <form [formGroup]="infoForm" (ngSubmit)="updateInfo()">
+          <div class="mb-3">
+            <label for="name" class="form-label">Nom complet</label>
+            <input type="text" id="name" formControlName="name" class="form-control" autocomplete="name" placeholder="Votre nom complet" />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Adresse email</label>
+            <input type="email" id="email" formControlName="email" class="form-control" autocomplete="email" placeholder="votre@email.com" />
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-save me-1"></i> Mettre à jour mes informations
+          </button>
+        </form>
+      </div>
+    </div>
+  
+    <!-- Sécurité -->
+    <div class="card shadow-sm border-0 mb-4">
+      <div class="card-body">
+        <h4 class="mb-4"><i class="bi bi-shield-lock"></i> Sécurité du compte</h4>
+        <form [formGroup]="passwordForm" (ngSubmit)="changePassword()">
+          <div class="mb-3">
+            <label for="currentPassword" class="form-label">Mot de passe actuel</label>
+            <input type="password" id="currentPassword" formControlName="currentPassword" class="form-control" autocomplete="current-password" placeholder="********" />
+          </div>
+          <div class="mb-3">
+            <label for="newPassword" class="form-label">Nouveau mot de passe</label>
+            <input type="password" id="newPassword" formControlName="newPassword" class="form-control" autocomplete="new-password" placeholder="********" />
+          </div>
+          <button type="submit" class="btn btn-warning text-white">
+            <i class="bi bi-lock-fill me-1"></i> Changer mon mot de passe
+          </button>
+        </form>
+      </div>
+    </div>
+  
+    <!-- Zone sensible -->
+    <div class="card border border-danger shadow-sm mb-5">
+      <div class="card-body">
+        <h4 class="text-danger mb-3"><i class="bi bi-exclamation-triangle-fill"></i> Zone sensible</h4>
+        <p class="text-muted mb-3">La suppression de votre compte est irréversible. Veuillez confirmer votre décision avec précaution.</p>
+        <button class="btn btn-outline-danger" (click)="suppAccount()">
+          <i class="bi bi-person-x me-1"></i> Supprimer mon compte>
+        </button>
+      </div>
+    </div>
+  </div>
+  

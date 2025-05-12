@@ -1,0 +1,107 @@
+<!-- Onglet Dépôts -->
+
+<!-- Recherche / Filtre -->
+<div class="mb-3 row gx-2 gy-2 align-items-center">
+  <div class="col-12 col-md-6">
+    <input
+      type="text"
+      class="form-control w-100"
+      placeholder="Rechercher par nom, email.."
+    />
+  </div>
+  <div class="col-12 col-md-6 text-md-end">
+    <select class="form-select w-100 w-md-auto">
+      <option value="">Filtrer par statut</option>
+      <option value="pending">En attente</option>
+      <option value="validated">Validé</option>
+      <option value="rejected">Rejeté</option>
+    </select>
+  </div>
+</div>
+
+<!-- Vue Table (desktop) -->
+<div class="card shadow-sm d-none d-md-block">
+  <div class="card-header bg-light">Liste des dépôts</div>
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Email</th>
+            <th>Montant</th>
+            <th>Méthode</th>
+            <th>Preuve</th>
+            <th>Date</th>
+            <th>Statut</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Depot of Depots; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ Depot.userId.email }}</td>
+            <td>{{ Depot.amount }}</td>
+            <td>Crypto</td>
+            <td><a [href]="Depot.paymentProofUrl" target="_blank">Voir</a></td>
+            <td>{{ Depot.createdAt | date:'dd/MM/yyyy' }}</td>
+            <td>
+              <span
+                class="badge"
+                [ngClass]="{
+                  'bg-success': Depot.status === 'validé',
+                  'bg-danger': Depot.status === 'rejeté',
+                  'bg-secondary': Depot.status === 'en attente'
+                }"
+              >
+                {{ Depot.status }}
+              </span>
+            </td>
+            <td class="d-flex flex-wrap gap-1">
+              <button (click)="validate(Depot._id)" class="btn btn-sm btn-outline-success" title="Valider">
+                <i class="bi bi-check-circle"></i>
+              </button>
+              <button (click)="rejeted(Depot._id)" class="btn btn-sm btn-outline-danger" title="Rejeter">
+                <i class="bi bi-x-circle"></i>
+              </button>
+              <button (click)="seenUser()" class="btn btn-sm btn-outline-primary" title="Détails">
+                <i class="bi bi-eye"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Vue Carte (mobile uniquement) -->
+<div class="d-md-none">
+  <div *ngFor="let Depot of Depots" class="card shadow-sm mb-3">
+    <div class="card-body">
+      <h6 class="mb-1">{{ Depot.userId.username }} <small class="text-muted">({{ Depot.userId.email }})</small></h6>
+      <p class="mb-1"><strong>Montant:</strong> {{ Depot.amount }} €</p>
+      <p class="mb-1"><strong>Méthode:</strong> {{Depot.txReference}} </p>
+      <p class="mb-1"><strong>Date:</strong> {{ Depot.createdAt| date:'dd/MM/yyyy' }}</p>
+      <p class="mb-1"><strong>Statut:</strong> 
+        <span class="badge"
+          [ngClass]="{
+            'bg-success': Depot.status === 'validé',
+            'bg-danger': Depot.status === 'rejeté',
+            'bg-secondary': Depot.status === 'en attente'
+          }">{{ Depot.status }}</span>
+      </p>
+      <div class="d-flex flex-wrap gap-2 mt-2">
+        <a [href]="Depot.paymentProofUrl" target="_blank" class="btn btn-sm btn-outline-dark w-100">
+          <i class="bi bi-image"></i> Preuve
+        </a>
+        <button (click)="validate(Depot._id)" class="btn btn-sm btn-outline-success w-100">
+          <i class="bi bi-check-circle"></i> Valider
+        </button>
+        <button (click)="rejeted(Depot._id)" class="btn btn-sm btn-outline-danger w-100">
+          <i class="bi bi-x-circle"></i> Rejeter
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

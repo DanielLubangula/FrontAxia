@@ -1,0 +1,35 @@
+.vip-card {
+  border-radius: 1rem;
+  overflow: hidden;
+  color: #fff;
+  background: linear-gradient(135deg, #2c3e50, #4ca1af);
+}
+
+.vip-0 {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+.vip-1 {
+  background: linear-gradient(135deg, #11998e, #38ef7d);
+}
+
+.vip-2 {
+  background: linear-gradient(135deg, #396afc, #2948ff);
+}
+
+.vip-3 {
+  background: linear-gradient(135deg, #f7971e, #ffd200);
+}
+
+.vip-4 {
+  background: linear-gradient(135deg, #e53935, #e35d5b);
+}
+
+.vip-5 {
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+}
+
+.card-body {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+}

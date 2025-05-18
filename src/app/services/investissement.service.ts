@@ -12,7 +12,7 @@ export class InvestissementService {
   constructor() { }
 
   getLogoUrl() {
-   return "http://localhost:5000/static/images/logo.png"
+   return "https://axiaback.onrender.com/static/images/logo.png"
   }
   
   async login(email : string, password : string):Promise<Auth | {error : string} | undefined>{
@@ -22,7 +22,7 @@ export class InvestissementService {
       password : password
     }
 
-    const envoie = await fetch(`http://localhost:5000/api/auth/login`,
+    const envoie = await fetch(`https://axiaback.onrender.com/api/auth/login`,
       {
         method : 'POST',
         headers : {
@@ -47,7 +47,7 @@ export class InvestissementService {
       email : email, password : password, referredBy : referredBy, username : username
     }
 
-    const envoie = await fetch('http://localhost:5000/api/auth/register',{
+    const envoie = await fetch('https://axiaback.onrender.com/api/auth/register',{
       method : 'POST',
       headers : {
         "Content-Type" : "application/json"

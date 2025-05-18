@@ -11,7 +11,7 @@ export class AdminService {
       email , password
     }
 
-    const response = await fetch('http://localhost:5000/api/admin/login', {
+    const response = await fetch('https://axiaback.onrender.com/api/admin/login', {
       method : "POST",
       headers : {
         'Content-Type' : 'application/json'
@@ -28,7 +28,7 @@ export class AdminService {
   }
 
   async getAllInfoAdmin(){
-    const rep = await fetch('http://localhost:5000/api/admin/dashboard-stats', {
+    const rep = await fetch('https://axiaback.onrender.com/api/admin/dashboard-stats', {
       method : "GET",
       headers : {
         "authorization" : `Bearer ${localStorage.getItem('token')}`
@@ -42,7 +42,7 @@ export class AdminService {
   }
 
   async infoUser (id : string){
-    const rep = await fetch(`http://localhost:5000/api/admin/users/${id}`, {
+    const rep = await fetch(`https://axiaback.onrender.com/api/admin/users/${id}`, {
       method : 'GET',
       headers : {
          "authorization" : `Bearer ${localStorage.getItem('token')}`
@@ -53,7 +53,7 @@ export class AdminService {
   }
 
   async deleteUser(id : string){
-    const rep = await fetch(`http://localhost:5000/api/admin/user/${id}`, {
+    const rep = await fetch(`https://axiaback.onrender.com/api/admin/user/${id}`, {
       method : 'DELETE',
       headers : {
         "authorization" : `Bearer ${localStorage.getItem('token')}`

@@ -49,7 +49,7 @@ export class UpdateAmountComponent {
       }
     };
 
-    fetch(`http://localhost:5000/api/admin/user/update/${this.userId}`, {
+    fetch(`https://axiaback.onrender.com/api/admin/user/update/${this.userId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedData)

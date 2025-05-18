@@ -9,7 +9,7 @@ export class PlanService {
   constructor() { }
 
   async getPlans():Promise<Plan>{
-      const rep = await fetch('http://localhost:5000/api/plans')
+      const rep = await fetch('https://axiaback.onrender.com/api/plans')
     
       const response = await rep.json()
 
@@ -24,7 +24,7 @@ export class PlanService {
       investmentRange,
       weeklyReturn
     }
-    return fetch('http://localhost:5000/api/plans', {
+    return fetch('https://axiaback.onrender.com/api/plans', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -45,13 +45,13 @@ export class PlanService {
   }
 
   async deletePlan(id : string){
-    return fetch(`http://localhost:5000/api/plans/${id}`, {
+    return fetch(`https://axiaback.onrender.com/api/plans/${id}`, {
       method: 'DELETE'
     }).then(res => res.json());
   }
 
   updatePlan(id: string, updatedPlan: any) {
-    return fetch(`http://localhost:5000/api/plans/${id}`, {
+    return fetch(`https://axiaback.onrender.com/api/plans/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedPlan)

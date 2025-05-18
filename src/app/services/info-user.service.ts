@@ -7,7 +7,7 @@ import { InfoUser } from '../models/info-user';
 export class InfoUserService {
 
   async getUserInfo(token: string): Promise<InfoUser> {
-    const response = await fetch('http://localhost:5000/api/user/getuser', {
+    const response = await fetch('https://axiaback.onrender.com/api/user/getuser', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -22,7 +22,7 @@ export class InfoUserService {
     return await response.json();
   }
   async getAlluser(token: string) {
-    const response = await fetch('http://localhost:5000/api/user/alluser', {
+    const response = await fetch('https://axiaback.onrender.com/api/user/alluser', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,

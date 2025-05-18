@@ -36,4 +36,24 @@ export class UsersComponent {
     
     
   }
+
+  seenDetails(id : string){
+    console.log('passé')
+    this.route.navigate([`secret/admin/user/details/${id}`])
+
+  }
+
+  suppUser(id : string){
+    const token = this.tokenService.getToken()
+    if (!token){
+      return
+    }
+
+    this.adminService.deleteUser(id).then((data) => {
+      console.log('data', data)
+      this.service.getAlluser(token).then((data) => {
+        this.users = data
+      })
+    })
+  }
 }

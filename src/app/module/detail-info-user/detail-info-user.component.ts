@@ -17,15 +17,17 @@ export class DetailInfoUserComponent {
 
   serviceInfo: AdminService = inject(AdminService);
   route: ActivatedRoute = inject(ActivatedRoute);
-
+ 
   ngOnInit() {
     const userId = this.route.snapshot.paramMap.get('id'); // Retrieve 'id' from the URL
     if (userId) {
       this.serviceInfo.infoUser(userId).then((data) => {
-        console.log(data);
+      
         this.user = data.user;
         this.depots = data.depots;
         this.retraits = data.retraits;
+
+        console.log(data)
       });
     }
   }

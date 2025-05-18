@@ -3,7 +3,10 @@ export interface InfoUser {
     email : string
     creatDate : string
     referralLink : string
-    balance : string
+    balance : {
+        deposit : string,
+        earning : string
+    },
     createdAt : string
     username : string
     _id : string

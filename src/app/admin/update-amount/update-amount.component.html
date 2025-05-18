@@ -1,0 +1,29 @@
+<div class="container mt-5" *ngIf="updateAmount">
+  <h3 class="mb-4">Modifier les Informations de l’Utilisateur</h3>
+
+  <form [formGroup]="updateAmount" (submit)="onSubmit($event)">
+    <div class="mb-3">
+      <label class="form-label">Nom d'utilisateur</label>
+      <input type="text" class="form-control" formControlName="username" required />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" formControlName="email" required />
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Argent Déposé</label>
+        <input type="number" class="form-control" formControlName="deposit" required />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Gains Gagnés</label>
+        <input type="number" class="form-control" formControlName="earning" required />
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Mettre à jour</button>
+  </form>
+</div>

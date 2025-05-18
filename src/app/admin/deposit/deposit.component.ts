@@ -3,10 +3,11 @@ import { Component, inject } from '@angular/core';
 import { ManuelDepositService } from '../../services/manuel-deposit.service';
 import { AuthService } from '../../services/auth.service'
 import { CommonModule, NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-deposit',
-  imports: [NgFor, CommonModule],
+  imports: [NgFor, CommonModule, FormsModule],
   templateUrl: './deposit.component.html',
   styleUrl: './deposit.component.css'
 })
@@ -14,7 +15,17 @@ import { CommonModule, NgFor } from '@angular/common';
 export class DepositComponent {
   service : ManuelDepositService = inject(ManuelDepositService)
   serviceToken : AuthService = inject(AuthService)
-  Depots !: Deposit[]
+  Depots : Deposit[] = []
+  searchTerm: string = '';
+
+  get filteredUsers() {
+    const term = this.searchTerm.toLowerCase();
+    return this.Depots?.filter(Depot =>
+      (Depot?.userId?.username ?? '').toLowerCase().includes(term) ||
+      (Depot?.userId?.email ?? '').toLowerCase().includes(term)
+    ) || [];
+  }
+  
 
   ngOnInit(){
     const token = this.serviceToken.getToken()
@@ -22,6 +33,7 @@ export class DepositComponent {
     if (!token){
       return
     }
+    
 
     this.service.getAllDeposit(token).then((data : any) => {
       this.Depots = data?.all

@@ -6,12 +6,13 @@ import { InfoUser } from '../../models/info-user';
 import { Deposit } from '../../models/deposit';
 import { CommonModule, NgFor } from '@angular/common';
 import { Plan } from '../../models/plan';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
-  imports: [ NgFor, CommonModule ],
+  imports: [ NgFor, CommonModule, RouterLink ],
 })
 export class ProfileComponent {
 
@@ -19,7 +20,7 @@ export class ProfileComponent {
   serviceNotif : NotificationService = inject(NotificationService);
   servicetoken : AuthService = inject(AuthService);
 
-  balance!: string;
+  balance!: any;
   name!: string;
   email!: string;
   date!: string;
@@ -28,6 +29,9 @@ export class ProfileComponent {
 
   // Liste des dépôts à afficher
   depots: Deposit[] = [];
+  retraits: any[] = [];
+  retraitsOrder: any[] = [];
+
 
   ngOnInit() {
     const token = this.servicetoken.getToken();
@@ -42,11 +46,25 @@ export class ProfileComponent {
     });
 
     this.serviceNotif.getAllNotif(token).then((res: any) => {
+      
       // filtrer uniquement les dépôts validés ou rejetés
       this.depots = res.depots.filter((d: Deposit) =>
         d.status === 'validé' || d.status === 'rejeté'
     );
-    console.log("depots", this.depots )
+
+      this.retraits = res.retraits.filter((d: Deposit) =>
+        d.status === 'approved' || d.status === 'rejected'
+    );
+
+    this.retraitsOrder = res.retraits.sort(
+      (a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
+    
+
+
+    console.log("retraits", this.retraits )
+    console.log("res", res)
+
     });
   }
 }

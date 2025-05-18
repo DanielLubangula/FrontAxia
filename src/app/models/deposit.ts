@@ -2,7 +2,7 @@ import { Plan } from './plan';
 export interface Deposit {
     userId: {
         _id: string
-        username: string | null | undefined
+        username: string 
         email: string
       }
     amount : string

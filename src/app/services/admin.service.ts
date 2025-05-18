@@ -52,5 +52,21 @@ export class AdminService {
     return await rep.json()
   }
 
-  constructor() { }
+  async deleteUser(id : string){
+    const rep = await fetch(`http://localhost:5000/api/admin/user/${id}`, {
+      method : 'DELETE',
+      headers : {
+        "authorization" : `Bearer ${localStorage.getItem('token')}`
+        
+      }
+    }).then((res) => {
+      if (!res.ok){
+        return {error : "Erreur lors de la suppression de l'utilisateur"}
+      }
+      return res.json()
+    }).catch((err) => {
+      return {error : "Erreur lors de la suppression de l'utilisateur"}
+    } )
+
+}
 }

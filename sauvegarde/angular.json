@@ -7,8 +7,10 @@
       "projectType": "application",
       "schematics": {},
       "root": "",
+
       "sourceRoot": "src",
       "prefix": "app",
+
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -20,7 +22,12 @@
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.css"],
-            "scripts": []
+            "scripts": [],
+            "server": "src/main.server.ts",
+            "outputMode": "server",
+            "ssr": {
+              "entry": "src/server.ts"
+            }
           },
           "configurations": {
             "production": {
@@ -36,9 +43,7 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all",
-              "baseHref": "/",
-              "index": "src/index.html"
+              "outputHashing": "all"
             },
             "development": {
               "optimization": false,
@@ -68,6 +73,8 @@
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
+           
+
             "styles": ["src/styles.css"],
             "scripts": []
           }

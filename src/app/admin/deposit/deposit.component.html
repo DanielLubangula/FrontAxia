@@ -6,6 +6,7 @@
     <input
       type="text"
       class="form-control w-100"
+      [(ngModel)]="searchTerm"
       placeholder="Rechercher par nom, email.."
     />
   </div>
@@ -37,8 +38,8 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <tr *ngFor="let Depot of Depots; let i = index">
+        <tbody *ngIf="Depots.length > 0">
+          <tr *ngFor="let Depot of filteredUsers; let i = index">
             <td>{{ i + 1 }}</td>
             <td>{{ Depot.userId.email }}</td>
             <td>{{ Depot.amount }}</td>
@@ -64,12 +65,12 @@
               <button (click)="rejeted(Depot._id)" class="btn btn-sm btn-outline-danger" title="Rejeter">
                 <i class="bi bi-x-circle"></i>
               </button>
-              <button (click)="seenUser()" class="btn btn-sm btn-outline-primary" title="Détails">
-                <i class="bi bi-eye"></i>
-              </button>
             </td>
           </tr>
         </tbody>
+        <div *ngIf="Depots.length === 0" class="alert alert-info">
+          Aucun dépôt trouvé.
+        </div>
       </table>
     </div>
   </div>

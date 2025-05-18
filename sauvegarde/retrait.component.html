@@ -22,7 +22,7 @@
       </p>
       <span class="badge bg-secondary mb-3">Statut : {{ retrait.status }}</span>
 
-      <div>
+      <div *ngIf="retrait.status === 'en attente'">
         <button class="btn btn-success me-2" (click)="updateStatus(retrait._id, 'approved')">
           Valider
         </button>

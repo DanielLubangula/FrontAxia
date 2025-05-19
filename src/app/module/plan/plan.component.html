@@ -1,13 +1,17 @@
 @if(isLoad){
 
-<div class="container my-5">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-    <div class="col" *ngFor="let plan of plans">
-      <app-plan-card [plan]="plan"></app-plan-card>
+  <div class="centr">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 py-5 px-3">
+      <div class="row g-4">
+        <div class="" *ngFor="let plan of plans">
+          <app-plan-card [plan]="plan" class="shadow-lg colorborder"></app-plan-card>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
+
+  
 }@else{
 <!-- From Uiverse.io by Admin12121 -->
 <div class="container">

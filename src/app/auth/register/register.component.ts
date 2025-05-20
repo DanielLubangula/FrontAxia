@@ -19,6 +19,7 @@ export class RegisterComponent {
   auth : AuthService = inject(AuthService)
   messageError : string = ""
   b : boolean = false
+  isLoading : boolean = false
   logoUrl! : string
   router : Router = inject(Router)
   
@@ -34,6 +35,7 @@ export class RegisterComponent {
   }
  
   save() {
+    this.isLoading = true
     try {
       this.service.register(
         this.registerForm.value.email ?? "",
@@ -41,6 +43,7 @@ export class RegisterComponent {
         this.registerForm.value.referredBy ?? "",
         this.registerForm.value.username ?? ""
       ).then((data: Auth | { error: string } | undefined) => {
+        this.isLoading = false
         if (!data) {
           console.log('Une erreur inattendue s\'est produite.');
           this.messageError = 'Une erreur inattendue s\'est produite.';

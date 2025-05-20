@@ -14,6 +14,7 @@ export class AddPlanComponent {
   msgError : String = ""
   msgSuccess : String = ""
   b : boolean = false
+  isLoading : boolean = false
 
   planForm : FormGroup = new FormGroup({
     vipLevel: new FormControl(''),
@@ -22,7 +23,8 @@ export class AddPlanComponent {
     weeklyReturn:new FormControl('')
   })
 
-  onSubmit(){
+  onSubmit(){ 
+    this.isLoading = true
     this.b = true
     this.service.addPlan(
       this.planForm.value.vipLevel ?? "",
@@ -30,6 +32,7 @@ export class AddPlanComponent {
       this.planForm.value.investmentRange ?? "",
       this.planForm.value.weeklyReturn ?? "",
     ).then((data : any) => {
+      this.isLoading = false
       if (data?.error){
         this.msgError = data.error;  
       }

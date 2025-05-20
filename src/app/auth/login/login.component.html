@@ -31,13 +31,23 @@
           {{messageError}}
         </div>
         
-        <div class="d-grid">
+        <div class="d-grid" *ngIf="!isLoading">
           <button type="submit" class="btn " style="background-color: #d4af37; color: #f5f5f5">Se connecter</button>
         </div>
         
-        <div class="text-center mt-3">
-          <small>Pas encore de compte ? <a [routerLink]="'/auth/register'">S’inscrire</a></small>
-        </div>
+           <section *ngIf="isLoading" class="dots-container">
+             <div class="dot"></div>
+             <div class="dot"></div>
+             <div class="dot"></div>
+             <div class="dot"></div>
+             <div class="dot"></div>
+           </section>
+
+
+          <div  class="text-center mt-3">
+            <small>Pas encore de compte ? <a [routerLink]="'/auth/register'">S’inscrire</a></small>
+          </div>
+        
       </form>
     </div>
   </div>

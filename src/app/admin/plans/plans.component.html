@@ -56,6 +56,7 @@
                   type="button"
                   (click)="modified(p._id)"
                   class="btn btn-primary btn-sm w-100 mt-2"
+                  *ngIf="!isLoading"
                 >
                   <i class="bi bi-save"></i>
                 </button>
@@ -63,9 +64,18 @@
                   type="button"
                   (click)="deletePlan(p._id)"
                   class="btn btn-danger btn-sm w-100 mb-2"
+                  *ngIf="!isLoading"
                 >
                   <i class="bi bi-trash"></i>
                 </button>
+
+                <section class="dots-container m-2" *ngIf="isLoading">
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                </section>
               </div>
             </form>
           </div>

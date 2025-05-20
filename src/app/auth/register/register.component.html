@@ -34,9 +34,19 @@
           {{messageError}}
         </div>
 
-        <div class="d-grid mt-4">
+        <div class="d-grid mt-4" *ngIf="!isLoading" >
           <button type="submit" class="btn" style="background-color: #d4af37; color: #f5f5f5">S'inscrire</button>
         </div>
+
+        <section class="dots-container" *ngIf="isLoading" >
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </section>
+      
+
         <div class="text-center mt-3">
           <small>Déjà un compte ? <a [routerLink]="'/auth/login'">Se connecter</a></small>
         </div>

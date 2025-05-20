@@ -23,9 +23,17 @@
       </div>
   
       <div class="col-12 text-end">
-        <button type="submit" class="btn btn-success">
+        <button type="submit" class="btn btn-success" *ngIf="!isLoading" >
           <i class="bi bi-check-circle"></i> Ajouter
         </button>
+        <section class="dots-container m-1" *ngIf="isLoading">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </section>
+
 
           <!-- Message de succès -->
     @if(b){

@@ -29,7 +29,7 @@
         <ng-container *ngIf="isLogin; else notLoggedIn">
 
           <li class="nav-item">
-            <a class="nav-link text-uppercase fw-bold" style="color: #ffffff;" routerLink="/about">
+            <a class="nav-link text-uppercase fw-bold" style="color: #ffffff;" [routerLink]='("/about")'>
               <i class="bi bi-info-circle-fill me-2"></i>À propos de nous
             </a>
           </li>

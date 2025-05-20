@@ -15,6 +15,7 @@ export class RequestRetraitComponent {
 
   successMessage: string = '';
   errorMessage: string = '';
+  isLoading : boolean = false
 
   ngOnInit(): void {
     this.retraitForm = new FormGroup({
@@ -32,14 +33,15 @@ export class RequestRetraitComponent {
   }
 
   onSubmit(): void {
+    this.isLoading = true
     this.submitted = true;
     this.successMessage = '';
     this.errorMessage = '';
-
+    
     if (this.retraitForm.invalid) return;
-
+    
     const formData = this.retraitForm.value;
-
+    
     fetch('https://axiaback.onrender.com/api/retrait/request', {
       method: 'POST',
       headers: {
@@ -48,7 +50,8 @@ export class RequestRetraitComponent {
       },
       body: JSON.stringify(formData),
     })
-      .then(async res => {
+    .then(async res => {
+        this.isLoading = false
         const data = await res.json();
         if (!res.ok) throw new Error(data.message || 'Erreur inconnue');
 

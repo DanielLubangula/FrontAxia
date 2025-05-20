@@ -20,6 +20,7 @@ auth : AuthService = inject(AuthService)
 messageError! : string
 router : Router = inject(Router)
 logoUrl! : string 
+isLoading : boolean = false
 
 loginForm =  new FormGroup({
 email : new FormControl(''),
@@ -33,11 +34,13 @@ ngOnInit(){
 }
  
 onSubmit() {
+  this.isLoading = true
   try {
     this.service.login(
       this.loginForm.value.email ?? '',
       this.loginForm.value.password ?? ''
     ).then((data: Auth | { error: string } | undefined) => {
+      this.isLoading = false
       if (!data) {
         this.messageError = 'Une erreur inattendue s\'est produite.';
         return;

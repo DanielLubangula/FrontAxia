@@ -1,3 +1,4 @@
+import { AboutComponent } from './module/about/about.component';
 import { Routes } from '@angular/router';
 import { HomeComponent } from './module/home/home.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -27,5 +28,6 @@ export const routes: Routes = [
     {path : 'secret/admin/detail/info/:id', component : DetailInfoUserComponent},
     {path : 'secret/admin/user/details/:id', component : UpdateAmountComponent},
     {path : 'retrait', component : RequestRetraitComponent},
+    {path : 'about', component :  AboutComponent}
 ];
  

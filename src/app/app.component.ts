@@ -3,7 +3,8 @@ import { RouterOutlet, Router } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { NgIf } from '@angular/common';
 import { FooterComponent } from "./module/footer/footer.component";
-
+declare var AOS : any; 
+// import * as AOS from 'aos'
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,13 @@ import { FooterComponent } from "./module/footer/footer.component";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   showHeader = true
+
+  ngOnInit(){
+    AOS.init()
+  }
 
   constructor(private router: Router) {
     this.router.events.subscribe(() => {

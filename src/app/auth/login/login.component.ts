@@ -28,9 +28,7 @@ password : new FormControl('')
 })
 
 ngOnInit(){
-  console.log('Test Ici')
   this.logoUrl = this.service.getLogoUrl()
-  console.log('logoUrl : ', this.logoUrl)
 }
  
 onSubmit() {

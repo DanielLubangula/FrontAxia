@@ -22,4 +22,29 @@
     transform: scale(1.1);
     background-color: #1ebd57;
   }
+
+  .telegram-float {
+    position: fixed;
+    bottom: 20px;
+    color: white;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    left: 20px;
+    background-color: #0088cc;
+  }
+  
+  .telegram-float:hover {
+    transform: scale(1.1);
+    background-color: #007ab8;
+  }
   

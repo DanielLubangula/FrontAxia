@@ -35,6 +35,12 @@ export class HomeComponent {
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_blank');
   }
+
+  openTelegram() {
+  const telegramUsername = 'Axiacapi'; // Remplace par ton @nom d'utilisateur sans le @
+  const telegramUrl = `https://t.me/${telegramUsername}`;
+  window.open(telegramUrl, '_blank');
+}
   
   
 }

@@ -24,7 +24,8 @@ export class ManuelDepositComponent {
 
   depositForm = new FormGroup({
     amount: new FormControl(''),
-    txReference: new FormControl('')
+    txReference: new FormControl(''),
+    network: new FormControl(''), // Ajoutez ce champ
   });
 
   selectedFile: File | null = null;
@@ -51,7 +52,7 @@ export class ManuelDepositComponent {
     });
   }
 
-
+ 
   ngOnInit(){
     this.id = this.route.snapshot.paramMap.get('id') 
   }
@@ -83,7 +84,8 @@ export class ManuelDepositComponent {
     formData.append('amount', this.depositForm.value.amount || '');
     formData.append('txReference', this.depositForm.value.txReference || '');
     formData.append('paymentProof', this.selectedFile);
-
+    formData.append('network', this.depositForm.value.network || ''); // Ajoutez le champ réseau
+  
     try {
       const response = await this.depositService.submitDeposit(formData, this.id);
       this.isLoading = false

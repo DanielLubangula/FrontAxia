@@ -38,6 +38,7 @@ export class ProfileComponent {
     if (!token) return;
 
     this.service.getUserInfo(token).then((data: InfoUser) => {
+      console.log("info user data", data);
       this.balance = data.balance;
       this.email = data.email;
       this.date = data.createdAt;

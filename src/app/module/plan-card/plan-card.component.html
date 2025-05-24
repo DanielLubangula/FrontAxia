@@ -1,6 +1,5 @@
-<div class="colorborder card shadow border-0 rounded-4 w-100 d-flex flex-column"
-     [ngClass]="[getVipBackground(plan.vipLevel), getVipCardClass(plan.vipLevel)]"
-     data-aos="fade-up" data-aos-duration="1000">
+<div class=" colorborder card shadow border-0 rounded-4 w-100 d-flex flex-column"
+     [ngClass]="[getVipBackground(plan.vipLevel), getVipCardClass(plan.vipLevel)]">
   <div class="card-body text-center bg-light flex-grow-1 d-flex flex-column justify-content-between p-4">
     
     <div>
@@ -21,7 +20,7 @@
         <li class="list-group-item d-flex justify-content-between" *ngIf="plan.duration">
           <span><i class="bi bi-clock me-2"></i>Durée</span>
           <strong>{{ plan.duration }}</strong>
-        </li>
+        </li> 
       </ul>
     </div>
 

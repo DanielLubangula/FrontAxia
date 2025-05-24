@@ -28,5 +28,13 @@ export class HomeComponent {
     //   // console.log("this : ",this.plans)
     // })
   }
+
+  openWhatsApp() {
+    const phoneNumber = '62 813-7395-1543'; // Remplace par le numéro du service client (au format international sans +)
+    const message = encodeURIComponent('Bonjour, j’ai besoin d’aide concernant votre plateforme.');
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappUrl, '_blank');
+  }
+  
   
 }

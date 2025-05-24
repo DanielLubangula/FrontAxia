@@ -20,21 +20,27 @@
               <div class="mb-3">
                 <strong>USDT / TRC20 :</strong>
                 <div class="d-flex align-items-center bg-light p-2 rounded justify-content-between">
-                  <code class="text-dark fw-bold fs-6">{{ usdtTrc20 }}</code>
-                  <button class="btn btn-gold btn-sm ms-3" (click)="copyAddress(usdtTrc20, 'trc20')">
+                  <div class="scroll-container me-3">
+                    <code class="text-dark fw-bold fs-6">{{ usdtTrc20 }}</code>
+                  </div>
+                  <button class="btn btn-gold btn-sm" (click)="copyAddress(usdtTrc20, 'trc20')">
                     <i class="bi bi-clipboard"></i> {{ copiedTrc20 ? '✅ Copié !' : 'Copier' }}
                   </button>
                 </div>
+                
               </div>
               
               <div class="mb-3">
                 <strong>USDT / BEP20 (BSC) :</strong>
                 <div class="d-flex align-items-center bg-light p-2 rounded justify-content-between">
-                  <code class="text-dark fw-bold fs-6">{{ usdtBep20 }}</code>
-                  <button class="btn btn-gold btn-sm ms-3" (click)="copyAddress(usdtBep20, 'bep20')">
+                  <div class="scroll-container me-3">
+                    <code class="text-dark fw-bold fs-6">{{ usdtBep20 }}</code>
+                  </div>
+                  <button class="btn btn-gold btn-sm" (click)="copyAddress(usdtBep20, 'bep20')">
                     <i class="bi bi-clipboard"></i> {{ copiedBep20 ? '✅ Copié !' : 'Copier' }}
                   </button>
                 </div>
+                
               </div>
 
               <div class="alert alert-danger mt-4" role="alert">
@@ -130,11 +136,22 @@
 
               <!-- Erreur -->
               <p class="container text-danger text-center"> {{ Errormsg }} </p>
+              <p class="container text-success text-center"> {{ successMsg }} </p>
 
-              <div class="d-grid mt-4">
+              <div class="d-grid mt-4" *ngIf="!isLoading">
                 <button type="submit" class="btn btn-gold btn-lg py-2">
                   <i class="bi bi-send-check"></i> Soumettre le dépôt
                 </button>
+
+                <section *ngIf="isLoading" class="dots-container">
+                  
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                </section>
+     
               </div>
             </form>
           </div>

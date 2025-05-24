@@ -37,6 +37,10 @@ export class RetraitComponent implements OnInit {
     })
     .then(res => res.json())
     .then(data => {
+      if (!Array.isArray(data)) {
+        console.log('Données de retraits invalides :', data);
+        return;
+      }
       this.retraits = data;
     })
     .catch(err => console.error('Erreur lors du chargement des retraits :', err));

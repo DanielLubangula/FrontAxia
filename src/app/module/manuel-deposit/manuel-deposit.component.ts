@@ -13,12 +13,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ManuelDepositComponent {
    // 💳 Adresses à afficher
-   usdtTrc20: string = 'TXwpsA2TUAj3iJWEyJeq1Fg8EQfWJjWfA';
-   usdtBep20: string = '0xe72b305f1b17f75ef6bf39f140c60f63b1c153d6';
+   usdtTrc20: string = 'TFpuYciqF4FkpT7oNPBbrB9yytHT3Txs7A';
+   usdtBep20: string = '0xbb46a46dc08d5e230e16d3adf82219ec75448aca';
 
     // ✅ États de copie
   copiedTrc20 = false;
   copiedBep20 = false;
+  isLoading : boolean = false
 
 
   depositForm = new FormGroup({
@@ -29,6 +30,7 @@ export class ManuelDepositComponent {
   selectedFile: File | null = null;
   previewUrl: string | null = null;
   Errormsg : string = "";
+  successMsg : string = "";
   copied : boolean = false
   id : string | null = null
   route : ActivatedRoute = inject(ActivatedRoute)
@@ -70,6 +72,7 @@ export class ManuelDepositComponent {
   }
 
   async onSubmit() {
+    this.isLoading = true
     if (!this.depositForm.valid || !this.selectedFile) {
       // alert("Veuillez remplir tous les champs.");
       this.Errormsg = "Veuillez remplir tous les champs."
@@ -83,8 +86,9 @@ export class ManuelDepositComponent {
 
     try {
       const response = await this.depositService.submitDeposit(formData, this.id);
+      this.isLoading = false
       if (response.ok) { 
-        alert("Dépôt soumis avec succès !");
+        this.successMsg = "Dépôt soumis avec succès !, Veuillez patienter pendant que nous vérifions votre dépôt.";
         this.depositForm.reset();
         this.previewUrl = null;
         this.selectedFile = null;

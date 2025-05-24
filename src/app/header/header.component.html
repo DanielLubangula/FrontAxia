@@ -1,17 +1,15 @@
 <nav class="navbar navbar-expand-lg shadow-sm" style="background-color: #d4af37;">
   <div class="container">
     <!-- Logo -->
-    <img  [src]="logoUrl" alt="Logo Axia" style="height:80px; width:auto; margin-right: 10px;">
+    <img [src]="logoUrl" alt="Logo Axia" style="height:80px; width:auto; margin-right: 10px;">
 
     <!-- Bouton menu mobile -->
-    <button (click)="toggleMenu()"  class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" 
+    <button (click)="toggleMenu()" class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" 
             data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <i *ngIf="isOpen ; else notOpen" class="bi bi-list fs-1 text-white"></i>
-
       <ng-template #notOpen> 
         <i class="bi bi-x fs-1 text-white"></i>
       </ng-template>
-      
     </button>
 
     <!-- Liens -->
@@ -20,7 +18,10 @@
 
         <!-- Onglets publics -->
         <li class="nav-item">
-          <a class="nav-link text-uppercase fw-bold" style="color: #ffffff;" routerLink="/">
+          <a class="nav-link text-uppercase fw-bold"
+             routerLink="/"
+             routerLinkActive="active-link"
+             [routerLinkActiveOptions]="{ exact: true }">
             <i class="bi bi-house-door-fill me-2"></i>Accueil
           </a>
         </li>
@@ -29,36 +30,39 @@
         <ng-container *ngIf="isLogin; else notLoggedIn">
 
           <li class="nav-item">
-            <a class="nav-link text-uppercase fw-bold" style="color: #ffffff;" [routerLink]='("/about")'>
+            <a class="nav-link text-uppercase fw-bold"
+               routerLink="/about"
+               routerLinkActive="active-link">
               <i class="bi bi-info-circle-fill me-2"></i>À propos de nous
             </a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link text-uppercase fw-bold" style="color: #ffffff;" routerLink="/transactions">
-              <i class="bi bi-arrow-left-right me-2"></i>Transactions
-            </a>
-          </li> -->
 
           <!-- Nom + Menu Profil -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle d-flex align-items-center text-uppercase fw-bold" href="#" 
-               style="color: #ffffff;" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle d-flex align-items-center text-uppercase fw-bold"
+               href="#" style="color: #ffffff;" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-person-circle me-2 fs-5"></i>
               <strong>{{ userName }}</strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-end shadow">
               <li>
-                <a class="dropdown-item" [routerLink]="('profil')">
+                <a class="dropdown-item"
+                   routerLink="/profil"
+                   routerLinkActive="active-link">
                   <i class="bi bi-person-lines-fill me-2"></i>Mon profil
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" routerLink="/dashboard">
+                <a class="dropdown-item"
+                   routerLink="/dashboard"
+                   routerLinkActive="active-link">
                   <i class="bi bi-speedometer2 me-2"></i>Dashboard
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" [routerLink]="('setting')">
+                <a class="dropdown-item"
+                   routerLink="/setting"
+                   routerLinkActive="active-link">
                   <i class="bi bi-gear-fill me-2"></i>Paramètres
                 </a>
               </li>
@@ -75,12 +79,16 @@
         <!-- Si NON connecté -->
         <ng-template #notLoggedIn>
           <li class="nav-item">
-            <a class="nav-link text-uppercase fw-bold" style="color: #ffffff;" [routerLink]="'auth/login'">
+            <a class="nav-link text-uppercase fw-bold"
+               routerLink="/auth/login"
+               routerLinkActive="active-link">
               <i class="bi bi-box-arrow-in-right me-2"></i>Connexion
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-uppercase fw-bold" style="color: #ffffff;" [routerLink]="'auth/register'">
+            <a class="nav-link text-uppercase fw-bold"
+               routerLink="/auth/register"
+               routerLinkActive="active-link">
               <i class="bi bi-person-plus-fill me-2"></i>Inscription
             </a>
           </li>

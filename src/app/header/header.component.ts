@@ -1,13 +1,13 @@
 import { InvestissementService } from './../services/investissement.service';
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import { Router } from 'express';
 import { AuthService } from '../services/auth.service';
 import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-header',
-  imports: [NgIf, RouterLink],
+  imports: [NgIf, RouterLink, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 }) 

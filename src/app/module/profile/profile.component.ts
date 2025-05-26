@@ -63,7 +63,7 @@ export class ProfileComponent {
     
 
 
-    console.log("retraits", this.retraits )
+    console.log("retraitsOrder%%/Sq:sq!", this.retraitsOrder )
     console.log("res", res)
 
     });

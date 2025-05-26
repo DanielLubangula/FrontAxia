@@ -41,6 +41,22 @@ export class DepositComponent {
     })
   }
 
+  openImage(url: string) {
+  const imageWindow = window.open('', '_blank');
+  if (imageWindow) {
+    imageWindow.document.write(`
+      <html>
+        <head><title>Preuve de paiement</title></head>
+        <body style="margin:0">
+          <img src="${url}" style="width:100%;height:auto;display:block;margin:auto;" />
+        </body>
+      </html>
+    `);
+    imageWindow.document.close();
+  }
+}
+
+
   validate(id : string){
     const token = this.serviceToken.getToken()
     const status = {

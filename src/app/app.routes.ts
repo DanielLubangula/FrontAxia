@@ -13,6 +13,7 @@ import { DetailInfoUserComponent } from './module/detail-info-user/detail-info-u
 import { UpdateAmountComponent } from './admin/update-amount/update-amount.component';
 import { RetraitComponent } from './admin/retrait/retrait.component';
 import { RequestRetraitComponent } from './module/request-retrait/request-retrait.component';
+import { FaqComponent } from './module/faq/faq.component';
 
 export const routes: Routes = [
     {path : 'home', component : HomeComponent},
@@ -28,6 +29,7 @@ export const routes: Routes = [
     {path : 'secret/admin/detail/info/:id', component : DetailInfoUserComponent},
     {path : 'secret/admin/user/details/:id', component : UpdateAmountComponent},
     {path : 'retrait', component : RequestRetraitComponent},
-    {path : 'about', component :  AboutComponent}
+    {path : 'about', component :  AboutComponent},
+    {path : 'faq', component :  FaqComponent}
 ];
  

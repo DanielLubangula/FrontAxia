@@ -128,23 +128,35 @@
 
             <!-- Retraits -->
 <div *ngFor="let retrait of retraitsOrder ">
+
   <div
     class="alert"
     [ngClass]="{
       'alert-success': retrait.status === 'approved',
-      'alert-danger': retrait.status === 'rejected'
+      'alert-danger': retrait.status === 'rejected',
+      'alert-warning': retrait.status === 'pending',
     }"
   >
     <i
       class="bi"
       [ngClass]="{
         'bi-check-circle': retrait.status === 'approved',
-        'bi-x-circle': retrait.status === 'rejected'
+        'bi-x-circle': retrait.status === 'rejected',
+        'bi-hourglass-spilt': retrait.status === 'pending',
       }"
     ></i>
-    Votre retrait de ${{ retrait.amount }} a été
-    <strong>{{ retrait.status === 'approved' ? 'approuvé' : 'rejeté' }}</strong
-    >.
+
+    <span *ngIf="retrait.status === 'approved'">
+      Votre retrait de ${{ retrait.amount }} a été approuvé
+    </span>
+    <span *ngIf="retrait.status === 'rejected'">
+      Votre retrait de ${{ retrait.amount }} a été rejeté
+    </span>
+    <span *ngIf="retrait.status === 'pending'">
+      Votre retrait de ${{ retrait.amount }} est en cours de traitement
+    </span>
+
+
   </div>
 </div>
 

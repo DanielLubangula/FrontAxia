@@ -30,7 +30,7 @@ export class RetraitComponent implements OnInit {
   }
 
   fetchRetraits(): void {
-    fetch('http://localhost:5000/api/retrait/allretraits', {
+    fetch('https://axiaback.onrender.com/api/retrait/allretraits', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -48,7 +48,7 @@ export class RetraitComponent implements OnInit {
 
   updateStatus(id: string, status: 'approved' | 'rejected'): void {
    
-    fetch(`http://localhost:5000/api/retrait/updateretrait/${id}`, {
+    fetch(`https://axiaback.onrender.com/api/retrait/updateretrait/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

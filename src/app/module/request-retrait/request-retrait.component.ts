@@ -42,7 +42,7 @@ export class RequestRetraitComponent {
     
     const formData = this.retraitForm.value;
     
-    fetch('https://axiaback.onrender.com/api/retrait/request', {
+    fetch('http://localhost:5000/api/retrait/request', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

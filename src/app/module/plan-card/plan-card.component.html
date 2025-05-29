@@ -14,7 +14,7 @@
           <strong>{{ plan.investmentRange }}</strong>
         </li>
         <li class="list-group-item d-flex justify-content-between">
-          <span><i class="bi bi-bar-chart-line me-2"></i>Revenu hebdo</span>
+          <span><i class="bi bi-bar-chart-line me-2"></i>{{plan.returnLabel}}</span>
           <strong>{{ plan.weeklyReturn }}</strong>
         </li>
         <li class="list-group-item d-flex justify-content-between" *ngIf="plan.duration">

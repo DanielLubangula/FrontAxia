@@ -35,6 +35,7 @@ export class PlansComponent implements OnInit {
         investmentRange: new FormControl(plan.investmentRange),
         duration: new FormControl(plan.duration),
         weeklyReturn: new FormControl(plan.weeklyReturn),
+        returnLabel : new FormControl(plan.returnLabel)
       });
     });
   }
@@ -46,12 +47,12 @@ export class PlansComponent implements OnInit {
       const updatedPlan = form.value;
       
       console.log('Updated Plan:', updatedPlan);
-      console.log('Plan ID:', id);
+      ;
       this.service.updatePlan(id, updatedPlan).then(() => {
         this.isLoading = false
         alert('Plan mis à jour avec succès');
       });
-    }
+    } 
   }
   
   deletePlan(id: string) {

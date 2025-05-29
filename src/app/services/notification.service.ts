@@ -7,7 +7,7 @@ export class NotificationService {
 
   async getAllNotif(token : string){
     console.log('Bien bien')
-    const rep = await fetch('https://axiaback.onrender.com/notification/info', {
+    const rep = await fetch('http://localhost:5000/notification/info', {
       method : 'GET',
       headers : {
         'Content-Type' : 'application/json',

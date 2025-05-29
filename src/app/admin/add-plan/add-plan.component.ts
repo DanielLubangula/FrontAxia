@@ -20,17 +20,20 @@ export class AddPlanComponent {
     vipLevel: new FormControl(''),
     investmentRange: new FormControl(''),
     duration: new FormControl(''),
-    weeklyReturn:new FormControl('')
+    weeklyReturn:new FormControl(''),
+    returnLabel: new FormControl('')
   })
 
   onSubmit(){ 
     this.isLoading = true
     this.b = true
     this.service.addPlan(
+
       this.planForm.value.vipLevel ?? "",
       this.planForm.value.duration ?? "",
       this.planForm.value.investmentRange ?? "",
       this.planForm.value.weeklyReturn ?? "",
+      this.planForm.value.returnLabel ?? ""
     ).then((data : any) => {
       this.isLoading = false
       if (data?.error){

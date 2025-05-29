@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ManuelDepositService {
 
   async submitDeposit(formData: FormData, id : string | null): Promise<Response> {
-    return await fetch("https://axiaback.onrender.com/api/deposits/manual/"+id, {
+    return await fetch("http://localhost:5000/api/deposits/manual/"+id, {
       method: 'POST',
       headers : {
         'Authorization' : 'Bearer '+localStorage.getItem('token')
@@ -16,7 +16,7 @@ export class ManuelDepositService {
   }
 
   async getAllDeposit(token : string){
-    const rep = await fetch('https://axiaback.onrender.com/api/deposits/manual',{
+    const rep = await fetch('http://localhost:5000/api/deposits/manual',{
       method : "GET",
       headers : {
         'Content-Type' : 'application/json',
@@ -33,7 +33,7 @@ export class ManuelDepositService {
 
   async updateStatus(id : string, token : string, status : object){
     console.log(status)
-    const rep = await fetch(`https://axiaback.onrender.com/api/deposits/manual/${id}`,
+    const rep = await fetch(`http://localhost:5000/api/deposits/manual/${id}`,
       {
         method : "PUT",
         headers : {

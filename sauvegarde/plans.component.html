@@ -7,6 +7,7 @@
 
 <!-- Liste des plans existants -->
 <div id="plans-list">
+  <!-- Exemple d’un plan existant -->
   <div class="card mb-3 shadow-sm">
     <div class="card-body">
       <form class="row gx-2 gy-2 align-items-center">
@@ -40,19 +41,8 @@
                   formControlName="duration"
                 />
               </div>
-              <div class="col-12">
-                <label class="form-label">Libellé du rendement</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  formControlName="returnLabel"
-                  placeholder="Ex: Rendement mensuel"
-                />
-              </div>
               <div class="col-6 col-md-7">
-                <label class="form-label">
-                  {{ forms[p._id].get('returnLabel')?.value || 'Rendement' }}
-                </label>
+                <label class="form-label">Rendement hebdo.</label>
                 <input
                   type="text"
                   class="form-control"
@@ -115,16 +105,8 @@
         <label class="form-label">Durée</label>
         <input type="text" class="form-control" placeholder="Ex: 60 jours" />
       </div>
-      <div class="col-12">
-        <label class="form-label">Libellé du rendement</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Ex: Rendement mensuel"
-        />
-      </div>
       <div class="col-6 col-md-7">
-        <label class="form-label">Rendement</label>
+        <label class="form-label">Rendement hebdo.</label>
         <input type="text" class="form-control" placeholder="Ex: 15%" />
       </div>
       <div

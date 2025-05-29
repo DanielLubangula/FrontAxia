@@ -4,5 +4,6 @@ export interface Plan {
         investmentRange : string
         weeklyReturn : string
         duration: string
+        returnLabel: string
 }
 

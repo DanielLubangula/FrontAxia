@@ -30,7 +30,7 @@ export class HomeComponent {
   }
 
   openWhatsApp() {
-    const phoneNumber = '62 813-8479-3882'; // Remplace par le numéro du service client (au format international sans +)
+    const phoneNumber = '62 831-8479-3882'; // Remplace par le numéro du service client (au format international sans +)
     const message = encodeURIComponent('Bonjour, j’ai besoin d’aide concernant votre plateforme.');
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_blank');
